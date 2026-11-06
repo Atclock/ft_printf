@@ -1,54 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_strlcat.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: arommers <arommers@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/10/14 13:36:23 by arommers      #+#    #+#                 */
-/*   Updated: 2023/03/18 22:22:02 by adri          ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yabuzano <yabuzano@student.42amman.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/09 18:30:32 by yabuzano          #+#    #+#             */
+/*   Updated: 2026/10/19 20:56:32 by yabuzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "libft.h"
 
-/*Concatenate the string src to the end of dst. 
-It will concatenate at most size - strlen(dst) - 1 bytes,
-NUL-terminating the result */
-/*
-size_t	ft_strlcat(char *dst, const char *src, size_t size);
-
-int	main(void)
-{
-	char		s1[50] = "hallo";
-	const char	s2[] = " World";
-	size_t		c;
-
-	c = 5;
-	printf("%zu\n", ft_strlcat(s1, s2, c));
-	printf("%zu\n", strlcat(s1, s2, c));
-	return (0);
-}
-*/
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	size_t	a;
-	size_t	b;
-	size_t	c;
+	size_t	i;
+	size_t	dstlen;
+	size_t	srclen;
 
-	a = 0;
-	b = 0;
-	c = 0;
-	while (dst[a] != '\0' && a < size)
-		a++;
-	while (src[b] != '\0' && a + b + 1 < size)
+	i = 0;
+	dstlen = 0;
+	srclen = ft_strlen(src);
+	while (dstlen < size && dst[dstlen] != '\0')
+		dstlen++;
+	if (dstlen == size)
+		return (size + srclen);
+	while (src[i] != '\0' && (i + dstlen) < size - 1)
 	{
-		dst[a + b] = src[b];
-		b++;
+		dst[dstlen + i] = src[i];
+		i++;
 	}
-	if (a < size)
-		dst[a + b] = '\0';
-	while (src[c] != '\0')
-		c++;
-	return (a + c);
+	dst[dstlen + i] = '\0';
+	return (dstlen + srclen);
 }
+/*
+int	main()
+{
+	char	*src = "abc";
+	char	*dst = NULL;
+	int		x = ft_strlcat(dst, src, 0);
+	printf("Value of x is %d and dest is filled up with %s",x, dst);
+}*/

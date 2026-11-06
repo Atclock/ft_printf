@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_isprint.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: arommers <arommers@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/10/11 14:39:31 by arommers      #+#    #+#                 */
-/*   Updated: 2023/03/18 22:19:13 by adri          ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yabuzano <yabuzano@student.42amman.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/09 13:46:35 by yabuzano          #+#    #+#             */
+/*   Updated: 2026/10/14 21:03:17 by yabuzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "libft.h"
 
 int	ft_isprint(int c)
 {
 	if (c >= 32 && c <= 126)
 		return (1);
-	return (0);
+	else
+		return (0);
 }
-
-/*int	ft_isprint(int c);
-
-int	main(void)
+/*
+int	main()
 {
-	int	i;
-
-	i = 55;
-	printf("%d\n", ft_isprint(i));
-	printf("%d\n", isprint(i));
-	return (0);
-}
-*/
+	printf("%d\n", ft_isprint('\0'));
+	printf("%d\n", isprint('\0'));
+}*/

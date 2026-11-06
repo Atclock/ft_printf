@@ -1,52 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_strnstr.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: arommers <arommers@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/10/14 14:39:30 by arommers      #+#    #+#                 */
-/*   Updated: 2023/03/18 22:23:14 by adri          ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yabuzano <yabuzano@student.42amman.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/02 11:30:14 by yabuzano          #+#    #+#             */
+/*   Updated: 2026/10/15 18:07:45 by yabuzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "libft.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+char	*ft_strnstr(const char	*big, const char *little, size_t len)
 {
-	size_t	i;
-	size_t	j;
+	size_t	x;
+	size_t	y;
 
-	i = 0;
-	if (needle[i] == '\0')
-		return ((char *)haystack);
-	while (haystack[i] && i < len)
+	if (little[0] == '\0')
+		return ((char *)big);
+	y = 0;
+	while (y < len && big[y])
 	{
-		j = 0;
-		if (haystack[i] == needle[j])
+		x = 0;
+		while (little[x] && big[x] && little[x] == big[y] && y < len)
 		{
-			while (haystack[i + j] == needle[j] && i + j < len)
-			{
-				j++;
-				if (!needle[j])
-					return ((char *)(haystack + i));
-			}
+			x++;
+			y++;
 		}
-		i++;
+		if (little[x] == '\0')
+			return ((char *) &big[y - x]);
+		y++;
+		y = y - x;
 	}
 	return (NULL);
 }
-
 /*
-int	main(void)
+int	main()
 {
-	char	big[] = "";
-	char	small[] = "";
-	size_t	c;
+	char	*s1 = NULL;
+//	char	*s2 = "";
 
-	c = 20;
-	printf("%s\n", ft_strnstr(big, small, c));
-	printf("%s\n", strnstr(big, small, c));
-	return (0);
-}
-*/
+	printf("%s", ft_strnstr(s1, NULL, 8));
+}*/

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_lstnew.c                                        :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: arommers <arommers@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/11/02 09:05:37 by arommers      #+#    #+#                 */
-/*   Updated: 2023/03/18 22:20:04 by adri          ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yabuzano <yabuzano@student.42amman.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/08 19:31:15 by yabuzano          #+#    #+#             */
+/*   Updated: 2026/10/10 17:36:53 by yabuzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "libft.h"
 
 t_list	*ft_lstnew(void *content)
 {
@@ -24,13 +24,17 @@ t_list	*ft_lstnew(void *content)
 	return (node);
 }
 /*
-**int		main(void)
-**{
-**	char	str[] = "all hail bulbasaur";
-**
-**	t_list	new;
-**
-**	new = ft_lstnew((void *)str);
-**	printf("\n%s\n", new->content);
-**}
-*/
+int main()
+{
+	int	*content;
+	int	actualcontent = 5;
+	t_list	*list;
+
+	content = &actualcontent;
+	list = ft_lstnew((int *)content);
+	while (ft_lstiter(list))
+	{
+		printf("%d ", list->content);
+	}
+	free()
+}*/

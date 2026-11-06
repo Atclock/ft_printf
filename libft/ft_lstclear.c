@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_lstclear.c                                      :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: arommers <arommers@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/11/02 12:02:38 by arommers      #+#    #+#                 */
-/*   Updated: 2023/03/18 22:19:42 by adri          ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yabuzano <yabuzano@student.42amman.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/08 19:37:05 by yabuzano          #+#    #+#             */
+/*   Updated: 2026/10/15 20:23:11 by yabuzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_list	*node;
+	t_list	*tmp;
 
-	if (!*lst || !del)
+	if (!lst || !del)
 		return ;
-	while (*lst != NULL)
+	while (*lst)
 	{
-		node = (*lst)->next;
+		tmp = (*lst)->next;
 		ft_lstdelone(*lst, del);
-		*lst = node;
+		*lst = tmp;
 	}
 	*lst = NULL;
 }

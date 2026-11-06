@@ -6,26 +6,28 @@
 /*   By: yabuzano <yabuzano@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 10:18:47 by yabuzano          #+#    #+#             */
-/*   Updated: 2026/11/04 10:22:29 by yabuzano         ###   ########.fr       */
+/*   Updated: 2026/11/06 15:53:57 by yabuzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int		ft_formatv2(char type, va_list *args)
+static int	ft_formatv2(char type, va_list *args)
 {
 	if (type == 'u')
 		return (ft_putnbr_base(va_arg(*args, unsigned int), "0123456789"));
 	else if (type == 'x')
-		return (ft_putnbr_base(va_arg(*args, unsigned int), "0123456789abcdef"));
+		return (ft_putnbr_base(va_arg(*args, unsigned int),
+				"0123456789abcdef"));
 	else if (type == 'X')
-		return (ft_putnbr_base(va_arg(*args, unsigned int), "0123456789ABCDEF"));
+		return (ft_putnbr_base(va_arg(*args, unsigned int),
+				"0123456789ABCDEF"));
 	else if (type == 'p')
 		return (ft_putptr(va_arg(*args, void *)));
 	return (0);
 }
 
-int		ft_format(char type, va_list *args)
+int	ft_format(char type, va_list *args)
 {
 	char	*s;
 

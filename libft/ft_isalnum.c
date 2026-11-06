@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_isalnum.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: arommers <arommers@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/10/11 13:44:30 by arommers      #+#    #+#                 */
-/*   Updated: 2023/03/18 22:18:22 by adri          ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yabuzano <yabuzano@student.42amman.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/09 13:42:48 by yabuzano          #+#    #+#             */
+/*   Updated: 2026/10/14 20:57:05 by yabuzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "libft.h"
 
 int	ft_isalnum(int c)
 {
-	if ((c >= 'a' && c <= 'z')
-		|| (c >= 'A' && c <= 'Z')
-		|| (c >= '0' && c <= '9'))
+	if ((c >= 48 && c <= 57) || (c >= 65 && c <= 90)
+		|| (c >= 97 && c <= 122))
 		return (1);
-	return (0);
+	else
+		return (0);
 }
-
-/*int	ft_isalnum(int c);
-
-int	main(void)
+/*int	main()
 {
-	int	a;
-	
-	a = 5;
-	printf("%d\n", ft_isalnum(a));
-	printf("%d\n", isalnum(a));
-	return (0);
+	char	c = '\0';
+	printf("%d\n", isalnum(c));
+	printf("%d\n", ft_isalnum(c));
 }*/

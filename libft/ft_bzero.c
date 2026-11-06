@@ -1,36 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_bzero.c                                         :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: arommers <arommers@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/10/14 09:54:48 by arommers      #+#    #+#                 */
-/*   Updated: 2023/03/18 22:18:09 by adri          ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yabuzano <yabuzano@student.42amman.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/09 13:55:20 by yabuzano          #+#    #+#             */
+/*   Updated: 2026/10/16 11:40:02 by yabuzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {
-	unsigned char	*str;
-	size_t			i;
+	char	*ptr;
 
-	str = (unsigned char *)s;
-	i = 0;
-	while (i < n)
+	ptr = (char *) s;
+	while (n > 0)
 	{
-		str[i] = '\0';
-		i++;
+		*(ptr++) = 0;
+		n--;
 	}
 }
-
-/*int	main(void)
+/*
+int	main()
 {
-	char	str[] = "jovanka";
+//	char	str1[] = "Die leidenschaft bringt leiden";
+//	char	str2[] = "Die leidenschaft bringt leiden";
+	int	yassin[] = {0,1,2,3,4,5,6,7,8,9};
+	int	i;
 
-	printf("%s\n", ft_bzero(str, 5));
-	printf("%s\n", bzero(str, 5));
-	return(0);
+	i = 0;
+//	printf("%s\n", str1);
+	ft_bzero(yassin, 16);
+//	bzero(yassin, 12);
+	while (i != 10)
+	{
+	printf("%i", yassin[i]);
+	i++;
+	}
 }*/

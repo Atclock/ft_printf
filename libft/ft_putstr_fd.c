@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
+/*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
-/*                                                     +:+                    */
-/*   By: arommers <arommers@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/10/21 12:35:28 by arommers      #+#    #+#                 */
-/*   Updated: 2026/11/03 10:32:19 by yabuzano         ###   ########.fr       */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yabuzano <yabuzano@student.42amman.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/06 18:38:25 by yabuzano          #+#    #+#             */
+/*   Updated: 2026/10/19 19:32:25 by yabuzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,18 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	int	i;
-
-	i = 0;
-	if (s)
+	if (!s || fd < 0)
+		return ;
+	while (*s)
 	{
-		while (s[i] != '\0')
-		{
-			write(fd, &s[i], 1);
-		i++;
-		}
+		write(fd, s, 1);
+		s++;
 	}
 }
+/*
+int main ()
+{
+    char    *s = NULL;
+
+    ft_putstr_fd(s, 1);
+}*/

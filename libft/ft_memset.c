@@ -1,38 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_memset.c                                        :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: arommers <arommers@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/10/12 09:22:49 by arommers      #+#    #+#                 */
-/*   Updated: 2023/03/18 22:21:05 by adri          ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yabuzano <yabuzano@student.42amman.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/09 13:48:46 by yabuzano          #+#    #+#             */
+/*   Updated: 2026/10/14 21:06:50 by yabuzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "libft.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	unsigned char	*str;
-	unsigned char	d;
-	size_t			i;
+	unsigned char	*pointer;
 
-	str = (unsigned char *)b;
-	d = (unsigned char)c;
-	i = 0;
-	while (i < len)
+	pointer = (unsigned char *) s;
+	while (n > 0)
 	{
-		str[i] = d;
-			i++;
+		*pointer = (unsigned char) c;
+		pointer++;
+		n--;
 	}
-	return (b);
+	return (s);
 }
-
-/*int	main(void)
+/*
+int	main()
 {
-	char	str[] = "jovanka";
-	printf("%s\n", ft_memset(str, 'X', 5));
-	printf("%s\n", memset(str, 'X', 5));
-	return (0);
+	char	str1[10];
+//	char	str2[] = "Die katze hat das Pizza gegessen";
+
+//	memset(str1, 'A', 6);
+	ft_memset(str1, 'B', 6);
+
+	printf("str1 = %s\n", str1);
+//	printf("str2 = %s\n", str2);
 }*/

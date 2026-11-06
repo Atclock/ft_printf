@@ -1,41 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_strjoin.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: arommers <arommers@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/10/26 08:20:45 by arommers      #+#    #+#                 */
-/*   Updated: 2023/03/18 22:21:55 by adri          ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yabuzano <yabuzano@student.42amman.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/03 16:24:50 by yabuzano          #+#    #+#             */
+/*   Updated: 2026/10/15 18:41:32 by yabuzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		i;
-	int		j;
-	int		len_s1;
-	int		len_s2;
-	char	*new;
+	size_t	s1size;
+	size_t	s2size;
+	char	*p;
 
-	i = 0;
-	j = 0;
-	len_s1 = ft_strlen(s1);
-	len_s2 = ft_strlen (s2);
-	new = (char *)malloc(sizeof(char) * (len_s1 + len_s2 + 1));
-	if (s1 == 0 || s2 == 0)
+	if (s1 == NULL || s2 == NULL)
 		return (NULL);
-	if (!new)
+	s1size = ft_strlen(s1);
+	s2size = ft_strlen(s2);
+	p = (char *) malloc(s1size + s2size + 1);
+	if (!p)
 		return (NULL);
-	while (i < len_s1)
-	{
-		new[i] = s1[i];
-		i++;
-	}
-	while (j < len_s2)
-		new[i++] = s2[j++];
-	new[i] = '\0';
-	return (new);
+	ft_strlcpy(p, s1, s1size + 1);
+	ft_strlcpy((p + s1size), s2, s2size + 1);
+	return (p);
 }
+/*
+int	main()
+{
+	char const	*s1 = "Die leidenschaft";
+	char const	*s2 = NULL;
+	char	*result;
+	
+	result = ft_strjoin(s1, s2);
+	printf("%s", result);
+	free(result);
+}*/

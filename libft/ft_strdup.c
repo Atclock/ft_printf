@@ -1,42 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_strdup.c                                        :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: arommers <arommers@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/10/17 11:28:19 by arommers      #+#    #+#                 */
-/*   Updated: 2023/03/18 22:21:47 by adri          ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yabuzano <yabuzano@student.42amman.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/02 15:00:25 by yabuzano          #+#    #+#             */
+/*   Updated: 2026/10/16 14:22:16 by yabuzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "libft.h"
 
-char	*ft_strdup(const char *s1)
+char	*ft_strdup(const char *s)
 {
-	char	*dst;
-	int		i;
-	int		j;
+	char		*ss;
+	size_t		len;
+	size_t		index;
 
-	i = 0;
-	j = ft_strlen(s1) + 1;
-	dst = (char *) malloc(j);
-	if (dst == NULL)
+	index = 0;
+	len = ft_strlen(s);
+	ss = (char *) malloc(len + 1);
+	if (ss == NULL)
 		return (NULL);
-	while (s1[i] != '\0')
+	while (s[index] != '\0' )
 	{
-		dst[i] = s1[i];
-		i++;
+		ss[index] = s[index];
+		index++;
 	}
-	dst[i] = '\0';
-	return (dst);
+	ss[index] = '\0';
+	return (ss);
 }
-
-/*int	main(void)
+/*
+int	main()
 {
-	char str[] = "jovanka";
-	printf("%s\n", ft_strdup(str));
-	printf("%s\n", strdup(str));
-	return(0);
-}
-*/
+	char	*s = NULL;
+	char	*sdup;
+	sdup = strdup(s);
+	printf("%s \n", s);
+	printf("%s", sdup);
+}*/

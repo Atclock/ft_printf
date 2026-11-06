@@ -1,48 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_strncmp.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: arommers <arommers@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/10/12 14:06:55 by arommers      #+#    #+#                 */
-/*   Updated: 2023/10/30 10:55:39 by arommers      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yabuzano <yabuzano@student.42amman.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/01 19:40:36 by yabuzano          #+#    #+#             */
+/*   Updated: 2026/10/19 20:57:13 by yabuzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "libft.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	size_t	i;
+	size_t	index;
+	int		diff;
 
-	i = 0;
-	while (i < n && (s1[i] || s2[i]))
+	index = 0;
+	diff = 0;
+	while ((s1[index] != '\0' || s2[index] != '\0') && n)
 	{
-		if (s1[i] != s2[i])
+		if ((unsigned char) s1[index] == (unsigned char) s2[index])
 		{
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-			i++;
+			index++;
+			n--;
+			continue ;
 		}
-		else
-			i++;
-		if (!s1)
-			return (0);
+		diff = (unsigned char) s1[index] - (unsigned char) s2[index];
+		break ;
 	}
-	return (0);
+	return (diff);
 }
+/*
+int	main()
+{
+	const char	*s1 = "Die katze hat das Pizza gegessen";
+	const char	*s2 = "Die katze hat das Bier getronken";
 
-
-// int	main(void)
-// {
-// 	char	*str1;
-// 	char	*str2;
-// 	size_t	i;
-
-// 	str1 = "bulbasaur";
-// 	str2 = "bulba";
-// 	i = 8;
-// 	printf("%d\n", ft_strncmp(str1, str2, i));
-// 	printf("%d\n", strncmp(str1, str2, i));
-// 	return (0);
-// }
+	printf("%d", ft_strncmp(s1, s2, 19));
+}*/

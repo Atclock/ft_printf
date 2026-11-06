@@ -1,47 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_memmove.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: arommers <arommers@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/10/14 11:47:39 by arommers      #+#    #+#                 */
-/*   Updated: 2023/03/18 22:21:00 by adri          ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yabuzano <yabuzano@student.42amman.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/09 14:16:34 by yabuzano          #+#    #+#             */
+/*   Updated: 2026/10/19 19:20:26 by yabuzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	unsigned int	i;
+	unsigned const char	*csrc;
+	unsigned char		*cdest;
 
-	i = 0;
-	if (!dst && !src)
-		return (NULL);
-	if (dst <= src)
+	csrc = (unsigned const char *)src;
+	cdest = (unsigned char *)dest;
+	if (cdest <= csrc)
+		while (n--)
+			*cdest++ = *csrc++;
+	else if (cdest > csrc)
 	{
-		while (len > i)
-		{
-			((char *)dst)[i] = ((char *)src)[i];
-			i++;
-		}
+		cdest += n - 1;
+		csrc += n - 1;
+		while (n--)
+			*cdest-- = *csrc--;
 	}
-	else if (dst > src)
-	{
-		while (len > 0)
-		{
-			((char *)dst)[len -1] = ((char *)src)[len -1];
-			len--;
-		}
-	}
-	return (dst);
+	return (dest);
 }
-
-/*int	main(void)
+/*
+int	main()
 {
-	char	dest[100] = "aaaa";
-	const char	src[100] = "123";
-	size_t	n = 2;
-	printf("%s", ft_memmove(dest, src, n));
+	char	*src = "\0";
+	char	dest[10] = "Hellothere";
+	memmove(dest, src, 10);
+//	ft_memmove(dest, src, 10);
+	printf("%s", dest);
 }*/

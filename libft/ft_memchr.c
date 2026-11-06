@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_memchr.c                                        :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: arommers <arommers@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/10/14 09:02:40 by arommers      #+#    #+#                 */
-/*   Updated: 2023/03/18 22:20:34 by adri          ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yabuzano <yabuzano@student.42amman.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/02 10:56:11 by yabuzano          #+#    #+#             */
+/*   Updated: 2026/10/15 17:36:46 by yabuzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "libft.h"
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	size_t	i;
+	unsigned char	*sc;
 
-	i = 0;
-	while (i < n)
+	sc = (unsigned char *)s;
+	while (n && sc)
 	{
-		if ((*(unsigned char *)(s + i)) == ((unsigned char)c))
-			return ((void *)(s + i));
-		i++;
+		if (*sc == (unsigned char)c)
+			return ((void *)sc);
+		sc++;
+		n--;
 	}
-	return (0);
+	return (NULL);
 }
+/*
+int main()
+{
+    const char    *s = "Die katze hat das kode geschreiben";
+//    char    c = '\0';
+
+    printf("%s", (char *)ft_memchr(s, 0, 3));
+}*/

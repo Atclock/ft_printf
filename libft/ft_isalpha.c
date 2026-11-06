@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_isalpha.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: arommers <arommers@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/10/11 11:56:05 by arommers      #+#    #+#                 */
-/*   Updated: 2023/03/18 22:18:27 by adri          ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yabuzano <yabuzano@student.42amman.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/09 13:29:36 by yabuzano          #+#    #+#             */
+/*   Updated: 2026/10/14 20:11:19 by yabuzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "libft.h"
 
 int	ft_isalpha(int c)
 {
-	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
 		return (1);
-	return (0);
+	else
+		return (0);
 }
-
-/*int	ft_isalpha(int c);
-
-int	main(void)
+/*
+int	main()
 {
-	int i;
+	char	c;
+	c = '\0';
 
-	i = 1;
-	printf("%d\n", ft_isalpha(i));
-	printf("%d\n", isalpha(i));
-	return (0);
+	printf("%d\n", ft_isalpha(c));
+	printf("%d\n", isalpha(c));
 }*/

@@ -1,53 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_atoi.c                                          :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: arommers <arommers@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/10/14 15:50:35 by arommers      #+#    #+#                 */
-/*   Updated: 2023/03/18 22:18:00 by adri          ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yabuzano <yabuzano@student.42amman.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/02 12:05:22 by yabuzano          #+#    #+#             */
+/*   Updated: 2026/10/19 20:03:48 by yabuzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "libft.h"
+
+static int	issspace(int c)
+{
+	if ((c >= 9 && c <= 13) || c == 32)
+		return (1);
+	return (0);
+}
 
 int	ft_atoi(const char *str)
 {
-	int	a;
-	int	b;
-	int	i;
+	long	result;
+	int		sign;
+	int		i;
 
-	a = 0;
-	b = 1;
+	result = 0;
+	sign = 1;
 	i = 0;
-	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t'
-		|| str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
+	while (issspace(str[i]))
 		i++;
-	if (str[i] == '-' || str[i] == '+')
+	if (str[i] == '+' && str[i + 1] != '-')
+		i++;
+	if (str[i] == '-')
 	{
-		if (str[i] == '-')
-		{
-			b = b * -1;
-		}
-	i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		a = a * 10 + str[i] - '0';
+		sign = -1;
 		i++;
 	}
-	return (a * b);
+	while (str[i] && str[i] >= 48 && str[i] <= 57)
+	{
+		result *= 10;
+		result += str[i] - 48;
+		i++;
+	}
+	result *= sign;
+	return (result);
 }
-
-/*int	main(void)
+/*
+int	main()
 {
-	int	outcome;
-	char	str[] = "1234";
+	char *c = "2147483647";
 
-	outcome = ft_atoi(str);
-	printf("%d\n", outcome);
-	outcome = atoi(str);
-	printf("%d\n", outcome);
-	return (0);
+	printf("%d", ft_atoi(c));
 }*/

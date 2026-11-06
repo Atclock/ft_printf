@@ -1,32 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_memcpy.c                                        :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: arommers <arommers@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/10/14 10:09:36 by arommers      #+#    #+#                 */
-/*   Updated: 2023/03/18 22:20:55 by adri          ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yabuzano <yabuzano@student.42amman.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/09 14:08:20 by yabuzano          #+#    #+#             */
+/*   Updated: 2026/10/18 17:00:34 by yabuzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	size_t			i;
-	unsigned char	*str1;
-	unsigned char	*str2;
+	unsigned const char	*csrc;
+	unsigned char		*cdest;
 
-	i = 0;
-	str1 = (unsigned char *) dst;
-	str2 = (unsigned char *) src;
-	if (!dst && !src)
-		return (NULL);
-	while (i < n)
+	cdest = (unsigned char *) dest;
+	csrc = (unsigned const char *) src;
+	while (n--)
 	{
-		str1[i] = str2[i];
-		i++;
+		*cdest = *csrc;
+		cdest++;
+		csrc++;
 	}
-	return (dst);
+	return (dest);
 }
+/*
+int	main()
+{
+//	char	*src = "Die katze hat das Pizza gegessen";
+//	char	dest[1] = {"\0"};
+//	char	*s = "";
+//	char	d[50];
+
+	ft_memcpy(NULL, NULL, 6);
+//	memcpy(s, d, 6);
+//	printf("%s", dest);
+//	printf(" %s", d);
+}*/

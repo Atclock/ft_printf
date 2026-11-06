@@ -1,62 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_strtrim.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: arommers <arommers@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/10/26 09:04:11 by arommers      #+#    #+#                 */
-/*   Updated: 2023/03/18 22:23:30 by adri          ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yabuzano <yabuzano@student.42amman.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/03 19:26:38 by yabuzano          #+#    #+#             */
+/*   Updated: 2026/10/09 20:29:15 by yabuzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "libft.h"
 
-static int	ft_checkset(char c, char const *set)
+static int	in(const char *str, char const c)
 {
-	int	i;
-
-	i = 0;
-	while (set[i])
-	{
-		if (c == set[i])
-			return (1);
-		i++;
-	}
-	return (0);
+	while (*str && c != *str)
+		str++;
+	return (c == *str);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*new;
-	int		i;
-	int		start;
-	int		end;
+	size_t	first;
+	size_t	last;
+	char	*p;
 
-	start = 0;
-	while (s1[start] && ft_checkset(s1[start], set))
-		start++;
-	end = ft_strlen(s1);
-	while (end > start && ft_checkset(s1[end -1], set))
-		end--;
-	new = (char *)malloc(sizeof(char) * (end - start + 1));
-	if (!new)
+	if (!s1 || !set)
 		return (NULL);
-	i = 0;
-	while (start < end)
+	first = 0;
+	last = ft_strlen(s1);
+	while (in(set, s1[first]))
+		first++;
+	if (first == last)
 	{
-		new[i] = s1[start];
-		i++;
-		start++;
+		p = ft_strdup("");
+		return (p);
 	}
-	new[i] = '\0';
-	return (new);
+	while (in(set, s1[last - 1]))
+		last--;
+	p = ft_substr(s1, first, last - first);
+	return (p);
 }
+/*
+int	main()
+{
+	char const	*s1 = "getrimmt! Die katze ist getrimmtiitm";
+	char const	*set = "getrimmt";
+	char	*trimmte = ft_strtrim(s1, set);
 
-// int	main(void)
-// {
-// 	char const	str1[] = "";
-// 	char const	str2[] = "\0";
-// 	printf("%s\n", ft_strtrim(str1, str2));
-// 	return (0);
-// }
+	printf("%s", trimmte);
+}*/

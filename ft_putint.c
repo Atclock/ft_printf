@@ -6,13 +6,13 @@
 /*   By: yabuzano <yabuzano@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 10:40:34 by yabuzano          #+#    #+#             */
-/*   Updated: 2026/11/03 10:50:54 by yabuzano         ###   ########.fr       */
+/*   Updated: 2026/11/06 15:54:32 by yabuzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_putint(int n)
+int	ft_putint(int n)
 {
 	long				nb;
 	unsigned long		count;

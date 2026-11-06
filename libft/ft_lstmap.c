@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_lstmap.c                                        :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: arommers <arommers@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/11/02 13:54:33 by arommers      #+#    #+#                 */
-/*   Updated: 2023/03/18 22:19:59 by adri          ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yabuzano <yabuzano@student.42amman.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/10 18:35:14 by yabuzano          #+#    #+#             */
+/*   Updated: 2026/10/11 21:51:38 by yabuzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "libft.h"
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
-
 {
-	t_list	*new_node;
-	t_list	*new_list;
+	t_list	*nlist;
+	t_list	*nobj;
+	void	*con;
 
-	new_list = NULL;
-	if (!lst || !f)
+	if (!lst || !f || !del)
 		return (NULL);
+	nlist = NULL;
 	while (lst)
 	{
-		new_node = ft_lstnew(f(lst->content));
-		if (!new_node)
+		con = f(lst->content);
+		nobj = ft_lstnew(con);
+		if (!nobj)
 		{
-			ft_lstclear(&new_list, del);
+			del(con);
+			ft_lstclear(&nlist, del);
 			return (NULL);
 		}
-		ft_lstadd_back(&new_list, new_node);
+		ft_lstadd_back(&nlist, nobj);
 		lst = lst->next;
 	}
-	return (new_list);
+	return (nlist);
 }

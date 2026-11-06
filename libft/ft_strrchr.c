@@ -1,41 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_strrchr.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: arommers <arommers@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/10/12 13:36:02 by arommers      #+#    #+#                 */
-/*   Updated: 2023/03/18 22:23:25 by adri          ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yabuzano <yabuzano@student.42amman.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/09 18:45:20 by yabuzano          #+#    #+#             */
+/*   Updated: 2026/10/15 18:05:00 by yabuzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "libft.h"
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int	i;
+	char	*last;
 
-	i = ft_strlen(s);
-	while (i >= 0)
+	last = NULL;
+	while (s)
 	{
-		if (s[i] == (char)c)
-			return ((char *)(s + i));
-		i--;
+		if (*s == (char)c)
+			last = (char *)s;
+		if (*s == '\0')
+			break ;
+		s++;
 	}
-	return (0);
+	return (last);
 }
-
 /*
-int	main(void)
+int main()
 {
-	char	*str;
-	int		i;
-
-	str = "bulbasaur";
-	i = 'f';
-	printf("%s\n", ft_strrchr(str, i));
-	printf("%s\n", strrchr(str, i));
-	return (0);
-}
-*/
+	const char    *s = "Let it Happen";
+	char    c = 'c';
+//	printf("%s\n", strrchr(s, c));
+	printf("%s", ft_strrchr(s, c));
+}*/

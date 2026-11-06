@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_lstadd_front.c                                  :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: arommers <arommers@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/11/02 09:16:49 by arommers      #+#    #+#                 */
-/*   Updated: 2023/03/18 22:19:35 by adri          ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yabuzano <yabuzano@student.42amman.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/10 15:31:29 by yabuzano          #+#    #+#             */
+/*   Updated: 2026/10/15 20:20:49 by yabuzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "libft.h"
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (!*lst)
-	{
-		*lst = new;
-		return ;
-	}
-	if (!new)
+	if (!new || !lst)
 		return ;
 	new->next = *lst;
 	*lst = new;

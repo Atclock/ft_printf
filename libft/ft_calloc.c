@@ -1,48 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_calloc.c                                        :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: arommers <arommers@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/10/17 08:44:25 by arommers      #+#    #+#                 */
-/*   Updated: 2023/03/18 22:18:17 by adri          ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yabuzano <yabuzano@student.42amman.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/02 13:35:51 by yabuzano          #+#    #+#             */
+/*   Updated: 2026/10/16 14:20:31 by yabuzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void	*ptr;
-	size_t	i;
+	void	*p;
 
-	i = 0;
-	ptr = malloc (count * size);
-	if (ptr == NULL)
+	if (nmemb == 0 || size == 0)
+		return (malloc(0));
+	if (nmemb > (size_t)-1 / size)
 		return (NULL);
-	while (i < (count * size))
-	{
-		(*(unsigned char *)(ptr + i)) = 0;
-			i++;
-	}
-	return (ptr);
+	p = malloc(nmemb * size);
+	if (p == NULL)
+		return (NULL);
+	ft_bzero(p, nmemb * size);
+	return (p);
 }
-
-/*void	*ft_calloc(size_t count, size_t size);
-
-int	main(void)
+/*
+int	main()
 {
-	char	*str = ft_calloc (3, sizeof(int));
-	unsigned int	i;
-
-	i = 0;
-	while (i < 12)
+	int	i = 0;
+	int *p = (int *)ft_calloc(10, sizeof(int));
+	while (i < 10)
 	{
-		printf("%c", str[i]);
-		i++;
+	printf("%d ", p[i]);
+	i++;
 	}
-	free (str);
-	return (0);
-}
-*/
+	free(p);
+}*/

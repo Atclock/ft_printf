@@ -6,17 +6,17 @@
 /*   By: yabuzano <yabuzano@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 10:09:47 by yabuzano          #+#    #+#             */
-/*   Updated: 2026/11/04 10:16:20 by yabuzano         ###   ########.fr       */
+/*   Updated: 2026/11/06 15:51:34 by yabuzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
-	va_list 				args;
-	unsigned long			i;
-	unsigned long			count;
+	unsigned long	count;
+	unsigned long	i;
+	va_list			args;
 
 	i = 0;
 	count = 0;
@@ -38,7 +38,7 @@ int		ft_printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
-
+/*
 int	main()
 {
 	int	n  = 10;
@@ -52,4 +52,4 @@ int	main()
 	ft_printf("%x\n", 0);
 	ft_printf("%X\n", 0);
 	ft_printf("%p\n", p);
-}
+}*/

@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_isdigit.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: arommers <arommers@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/10/11 13:22:22 by arommers      #+#    #+#                 */
-/*   Updated: 2023/03/18 22:19:08 by adri          ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yabuzano <yabuzano@student.42amman.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/09 13:34:32 by yabuzano          #+#    #+#             */
+/*   Updated: 2026/10/14 20:55:23 by yabuzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "libft.h"
 
 int	ft_isdigit(int c)
 {
-	if (c >= '0' && c <= '9')
+	if (c >= 48 && c <= 57)
 		return (1);
-	return (0);
+	else
+		return (0);
 }
-
-/*int	ft_isdigit(int c);
-
-int	main(void)
+/*
+int	main()
 {
-	int i;
-
-	i = 'A';
-	printf("%d\n", ft_isdigit(i));
-	printf("%d\n", isdigit(i));
-	return (0);
+	char	c = '\0';
+	printf("%d\n", ft_isdigit(c));
+	printf("%d\n", isdigit(c));
 }*/

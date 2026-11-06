@@ -6,13 +6,13 @@
 /*   By: yabuzano <yabuzano@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 10:35:37 by yabuzano          #+#    #+#             */
-/*   Updated: 2026/11/03 10:46:48 by yabuzano         ###   ########.fr       */
+/*   Updated: 2026/11/06 15:44:49 by yabuzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_putnbr_base(unsigned long n, char *base)
+int	ft_putnbr_base(unsigned long n, char *base)
 {
 	unsigned long	base_len;
 	unsigned long	count;

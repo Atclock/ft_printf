@@ -1,30 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_strlcpy.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: arommers <arommers@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/10/14 12:08:53 by arommers      #+#    #+#                 */
-/*   Updated: 2023/03/18 22:22:56 by adri          ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yabuzano <yabuzano@student.42amman.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/09 14:35:54 by yabuzano          #+#    #+#             */
+/*   Updated: 2026/10/15 17:14:47 by yabuzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
 	size_t	i;
+	size_t	length;
 
+	length = ft_strlen(src);
 	i = 0;
-	if (dstsize > 0)
+	if (length + 1 < size)
+		ft_memcpy(dest, src, length + 1);
+	else if (size != 0)
 	{
-		while (i < (dstsize - 1) && src[i])
+		while (i < size - 1)
 		{
-			dst[i] = src[i];
+			dest[i] = src[i];
 			i++;
 		}
-	dst[i] = '\0';
+		dest[i] = '\0';
 	}
-	return (ft_strlen(src));
+	return (length);
 }
+/*
+int	main()
+{
+	char	*src = "Torschlusspanik";
+	char	dest[] = "";
+	int		rv;
+	
+	//rv = strlcpy(dest, src, 15);
+	rv = ft_strlcpy(dest, src, 15);
+	printf("%s %d", dest, rv);
+}*/

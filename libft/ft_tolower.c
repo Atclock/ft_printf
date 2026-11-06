@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_tolower.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: arommers <arommers@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/10/12 10:44:20 by arommers      #+#    #+#                 */
-/*   Updated: 2023/03/18 22:24:56 by adri          ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yabuzano <yabuzano@student.42amman.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/09 18:36:35 by yabuzano          #+#    #+#             */
+/*   Updated: 2026/10/14 21:23:12 by yabuzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "libft.h"
 
 int	ft_tolower(int c)
 {
-	if (c >= 'A' && c <= 'Z')
-		return (c + 32);
+	if (c >= 65 && c <= 90)
+		c += 32;
 	return (c);
 }
-
 /*
-int	main(void)
+int main()
 {
-	int	i;
-
-	i = 'a';
-	printf("%d\n", ft_tolower(i));
-	printf("%d\n", tolower(i));
-	return (0);
-}
-*/
+    char c = 'A';
+    printf("%c", ft_toupper(c));
+}*/

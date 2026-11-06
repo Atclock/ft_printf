@@ -1,49 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_substr.c                                        :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: arommers <arommers@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/10/21 13:39:01 by arommers      #+#    #+#                 */
-/*   Updated: 2023/03/18 22:23:36 by adri          ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yabuzano <yabuzano@student.42amman.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/02 16:29:17 by yabuzano          #+#    #+#             */
+/*   Updated: 2026/10/11 21:39:20 by yabuzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
-	size_t		j;
-	size_t		i;
-	size_t		size;
-	char		*str;
+	size_t	final;
+	size_t	slen;
+	char	*p1;
 
-	size = ft_strlen(s);
-	if (size <= len)
-		len = size;
-	str = (char *)malloc(sizeof(*s) * (len + 1));
-	if (str == 0)
+	if (!s)
 		return (NULL);
-	i = 0;
-	j = 0;
-	while (s[i] != '\0')
-	{
-		if (i >= start && j < len)
-		{
-			str[j] = s[i];
-			j++;
-		}
-		i++;
-	}
-	str[j] = 0;
-	return (str);
+	slen = ft_strlen(s);
+	if (start >= slen)
+		return (ft_strdup(""));
+	if (len > slen - start)
+		final = slen - start;
+	else
+		final = len;
+	p1 = malloc(sizeof(char) * final + 1);
+	if (!p1)
+		return (NULL);
+	ft_strlcpy(p1, &s[start], final + 1);
+	return (p1);
 }
-/*int	main(void)
+/*
+int	main()
 {
-	char const s[] = "hello world";
-	unsigned int	start = 7;
-	size_t	len = 2;
-	printf("%s", ft_substr(s,start,len));
-	return (0);
-}*/
+	char	*str = "wenn man wichtig wurden, haben man kein frei zeit";
+
+	printf("%s", ft_substr(str, 0, ft_strlen(str)));
+}
+*/

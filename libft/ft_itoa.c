@@ -1,67 +1,76 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_itoa.c                                          :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: arommers <arommers@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/10/26 12:50:17 by arommers      #+#    #+#                 */
-/*   Updated: 2023/03/18 22:19:25 by adri          ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yabuzano <yabuzano@student.42amman.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/03 20:47:33 by yabuzano          #+#    #+#             */
+/*   Updated: 2026/10/19 12:04:48 by yabuzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "libft.h"
 
-static int	nbr_size(long int len)
+static char	*pre_conv(int len)
 {
-	int	i;
+	char	*tmp;
 
-	i = 0;
-	if (len < 1)
+	tmp = malloc((len + 1) * sizeof(char));
+	if (!tmp)
+		return (NULL);
+	tmp[0] = '0';
+	return (tmp);
+}
+
+static int	int_len(long nbr)
+{
+	int	count;
+
+	count = 0;
+	if (nbr < 0)
 	{
-		len = len * -1;
-		i++;
+		count++;
+		nbr = -nbr;
 	}
-	while (len > 0)
+	if (nbr == 0)
+		count++;
+	while (nbr != 0)
 	{
-		len = len / 10;
-		i++;
+		nbr /= 10;
+		count++;
 	}
-	return (i);
+	return (count);
 }
 
 char	*ft_itoa(int n)
 {
-	char			*str;
-	int				count;
-	long int		i;
+	size_t	len;
+	size_t	i;
+	char	*res;
+	long	nbr;
 
-	i = n;
-	count = nbr_size(i);
-	str = (char *)ft_calloc (sizeof(char), (count + 1));
-	if (!str)
+	nbr = n;
+	len = int_len(nbr);
+	res = pre_conv(len);
+	if (!res)
 		return (NULL);
-	if (i < 0)
-		i = i * -1;
-	if (i == 0)
+	if (nbr < 0)
+		nbr = -nbr;
+	i = len - 1;
+	while (nbr != 0)
 	{
-		str[0] = 48;
-		return (str);
-	}
-	while (count--)
-	{
-		str[count] = i % 10 + '0';
-		i = i / 10;
+		res[i] = ((nbr % 10) + 48);
+		nbr = nbr / 10;
+		i--;
 	}
 	if (n < 0)
-		str[0] = '-';
-	return (str);
+		res[0] = '-';
+	res[len] = 0;
+	return (res);
 }
-
-// int main(void)
-// {
-// 	printf("%s\n", ft_itoa(-3251));
-// 	//char *ret = ft_itoa(INT_MIN);
-// 	//printf("%s\n", ret);
-// 	//printf("%s\n", ft_itoa(-123456789));
-// }
+/*
+int	main(void)
+{
+	printf("%s", ft_itoa(2147483647));
+}*/

@@ -1,40 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_strchr.c                                        :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: arommers <arommers@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/10/12 11:18:16 by arommers      #+#    #+#                 */
-/*   Updated: 2023/03/18 22:21:42 by adri          ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yabuzano <yabuzano@student.42amman.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/09 18:36:59 by yabuzano          #+#    #+#             */
+/*   Updated: 2026/10/19 20:50:16 by yabuzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {
-	unsigned char	j;
-	unsigned int	i;
+	unsigned long	i;
 
-	j = (unsigned char)c;
 	i = 0;
-	while (s[i] != '\0' && s[i] != j)
+	while (s[i] != '\0')
+	{
+		if (s[i] == (char)c)
+			return ((char *)&s[i]);
 		i++;
-	if (s[i] == j)
-		return ((char *)s + i);
-	return (0);
+	}
+	if (s[i] == (char)c)
+		return ((char *) &s[i]);
+	return (NULL);
 }
-
-/*int	main(void)
+/*
+int main()
 {
-	const char	*str;
-	int			i;
+    const char    *s = NULL;
+    //char    c = '0';
 
-	str = "bulbasaur";
-	i = 's';
-	printf("%s\n", ft_strchr(str, i));
-	printf("%s\n", strchr(str, i));
-	return (0);
-}
-*/
+//    printf("%s\n", ft_strchr(s, 0));
+	printf("%s", strchr(s, 0));
+}*/
